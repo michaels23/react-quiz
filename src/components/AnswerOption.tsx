@@ -5,6 +5,11 @@ export type Answer = {
   content: string;
 };
 
+export type answerOption = {
+  content: string;
+  type: string;
+};
+
 export type AnswerOptionProps = {
   answerType: string;
   answerContent: string;
@@ -23,7 +28,7 @@ function AnswerOption(props: AnswerOptionProps) {
         checked={props.answerType === props.answer}
         id={props.answerType}
         value={props.answerType}
-        disabled={props.answer.length <= 0}
+        disabled={props.answer.length > 0}
         onChange={props.onAnswerSelected}
       />
       <label className="radioCustomLabel" htmlFor={props.answerType}>
