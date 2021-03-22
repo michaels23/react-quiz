@@ -1,12 +1,7 @@
 import React, { ChangeEvent } from "react";
-import AnswerOption, { AnswerOptionProps } from "./AnswerOption";
+import AnswerOption, { answerOption } from "./AnswerOption";
 import Question from "./Question";
 import QuestionCount from "./QuestionCount";
-
-type answerOption = {
-  content: string;
-  type: string;
-};
 
 type QuizProps = {
   answer: string;
