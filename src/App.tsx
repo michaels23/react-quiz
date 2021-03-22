@@ -1,17 +1,17 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Question from "./components/Question";
+import Quiz from "./components/Quiz";
 import { useEffect, useState } from "react";
 import quizQuestions from "./api/quizQuestions";
+import { answerOption } from "./components/AnswerOption";
 
-export default () => {
+let QuizApp = () => {
   const [counter, setCounter] = useState(0);
   const [questionId, setQuestionId] = useState(1);
   const [question, setQuestion] = useState("");
-  const [answerOptions, setAnswerOptions] = useState([{}]);
+  const [answerOptions, setAnswerOptions] = useState([] as answerOption[]);
   const [answer, setAnswer] = useState("");
-  const [answersCount, setAnswersCount] = useState(0);
-  const [result, setResult] = useState("");
+  // const [result, setResult] = useState("");
 
   const shuffleArray = (array: any[]) => {
     var currentIndex = array.length,
@@ -41,13 +41,42 @@ export default () => {
     setAnswerOptions(shuffledAnswerOptions[0]);
   }, []);
 
+  function setUserAnswer(answer: string) {
+    setAnswer(answer);
+  }
+
+  function setNextQuestion() {
+    setCounter(counter + 1);
+    setQuestionId(questionId + 1);
+    setQuestion(quizQuestions[counter].question);
+    setAnswerOptions(quizQuestions[counter].answers);
+    setAnswer("");
+  }
+
+  function handleAnswerSelected(event: { currentTarget: { value: any } }) {
+    setUserAnswer(event.currentTarget.value);
+    if (questionId < quizQuestions.length) {
+      setTimeout(() => setNextQuestion(), 300);
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h2>React Quiz</h2>
-      </header>
-      <Question content="What is your favourite food?" />
+      </div>
+      <Quiz
+        answer={answer}
+        answerOptions={answerOptions}
+        questionId={questionId}
+        question={question}
+        questionTotal={quizQuestions.length}
+        onAnswerSelected={handleAnswerSelected}
+        counter={counter}
+      />
     </div>
   );
 };
+
+export default QuizApp;
