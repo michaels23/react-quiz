@@ -6,7 +6,7 @@ import quizQuestions from "./api/quizQuestions";
 import { answerOption } from "./components/AnswerOption";
 
 let QuizApp = () => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
   const [questionId, setQuestionId] = useState(1);
   const [question, setQuestion] = useState("");
   const [answerOptions, setAnswerOptions] = useState([] as answerOption[]);
