@@ -1,9 +1,9 @@
+import { FC } from "react";
+
 type QuestionProps = {
   content: string;
 };
 
-function Question(props: QuestionProps) {
+export const Question: FC<QuestionProps> = (props: QuestionProps) => {
   return <h2 className="question">{props.content}</h2>;
-}
-
-export default Question;
+};

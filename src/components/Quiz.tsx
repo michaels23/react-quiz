@@ -1,7 +1,7 @@
-import React, { ChangeEvent } from "react";
-import AnswerOption, { answerOption } from "./AnswerOption";
-import Question from "./Question";
-import QuestionCount from "./QuestionCount";
+import { ChangeEvent, FC } from "react";
+import { AnswerOption, answerOption } from "./AnswerOption";
+import { Question } from "./Question";
+import { QuestionCount } from "./QuestionCount";
 
 type QuizProps = {
   answer: string;
@@ -13,7 +13,7 @@ type QuizProps = {
   onAnswerSelected: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-function Quiz(props: QuizProps) {
+export const Quiz: FC<QuizProps> = (props: QuizProps) => {
   function renderAnswerOptions(key: answerOption) {
     return (
       <AnswerOption
@@ -36,6 +36,4 @@ function Quiz(props: QuizProps) {
       </ul>
     </div>
   );
-}
-
-export default Quiz;
+};

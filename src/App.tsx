@@ -1,17 +1,16 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Quiz from "./components/Quiz";
-import { useEffect, useState } from "react";
+import { Quiz } from "./components/Quiz";
+import { FC, useEffect, useState } from "react";
 import quizQuestions from "./api/quizQuestions";
 import { answerOption } from "./components/AnswerOption";
 
-let QuizApp = () => {
+export const App: FC = () => {
   const [counter, setCounter] = useState(1);
   const [questionId, setQuestionId] = useState(1);
   const [question, setQuestion] = useState("");
   const [answerOptions, setAnswerOptions] = useState([] as answerOption[]);
   const [answer, setAnswer] = useState("");
-  // const [result, setResult] = useState("");
 
   const shuffleArray = (array: any[]) => {
     var currentIndex = array.length,
@@ -78,5 +77,3 @@ let QuizApp = () => {
     </div>
   );
 };
-
-export default QuizApp;

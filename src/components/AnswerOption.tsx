@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, FC } from "react";
 
 export type Answer = {
   type: string;
@@ -18,7 +18,9 @@ export type AnswerOptionProps = {
   onAnswerSelected: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-function AnswerOption(props: AnswerOptionProps) {
+export const AnswerOption: FC<AnswerOptionProps> = (
+  props: AnswerOptionProps
+) => {
   return (
     <li className="answerOption">
       <input
@@ -36,6 +38,4 @@ function AnswerOption(props: AnswerOptionProps) {
       </label>
     </li>
   );
-}
-
-export default AnswerOption;
+};
