@@ -6,7 +6,7 @@ const isDebugging = () => {
     slowMo: 250,
     devtools: true,
   }
-  return process.env.NODE_ENV === 'debug' ? debugging_mode : {}
+  return process.env.NODE_ENV.indexOf('debug') == 0 ? debugging_mode : {}
 }
 
 let browser
@@ -27,15 +27,25 @@ afterAll(() => {
 
 describe('on page load', () => {
   it('loads questions', async () => {
-    const html = await page.$eval('.questionCount', e => e.innerHTML);
-    expect(html).toContain('Question <span>1</span>');
-  })
+    await page.waitForXPath("//*[@class='questionCount' and contains(., '1')]");
 
-  it('loads answer options', async () => {
     const answerOptions = await page.$eval('.answerOptions', el => el ? true : false)
     const listItems = await page.$$('.answerOption')
     expect(answerOptions).toBe(true)
     expect(listItems.length).toBeGreaterThan(1)
+
+    await page.click('.radioCustomButton');
+    await page.waitForXPath("//*[@class='questionCount' and contains(., '2')]");
+
+    await page.click('.radioCustomButton');
+    await page.waitForXPath("//*[@class='questionCount' and contains(., '3')]");
+
+    await page.click('.radioCustomButton');
+    await page.waitForXPath("//*[@class='questionCount' and contains(., '4')]");
+
+    await page.click('.radioCustomButton');
+    await page.waitForXPath("//*[@class='questionCount' and contains(., '5')]");
+
   });
 
 })
