@@ -71,8 +71,9 @@ export const App: FC = () => {
         questionId={questionId}
         question={question}
         questionTotal={quizQuestions.length}
-        onAnswerSelected={handleAnswerSelected}
         counter={counter}
+        selectSize={3}
+        onAnswerSelected={handleAnswerSelected}
       />
     </div>
   );

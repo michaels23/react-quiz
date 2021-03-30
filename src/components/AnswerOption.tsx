@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from "react";
+import { FC } from "react";
 
 export type Answer = {
   type: string;
@@ -15,27 +15,19 @@ export type AnswerOptionProps = {
   answerContent: string;
   answer: string;
   questionId: number;
-  onAnswerSelected: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const AnswerOption: FC<AnswerOptionProps> = (
   props: AnswerOptionProps
 ) => {
   return (
-    <li className="answerOption">
-      <input
-        type="radio"
-        className="radioCustomButton"
-        name="radioGroup"
-        checked={props.answerType === props.answer}
-        id={props.answerType}
-        value={props.answerType}
-        disabled={props.answer.length > 0}
-        onChange={props.onAnswerSelected}
-      />
-      <label className="radioCustomLabel" htmlFor={props.answerType}>
-        {props.answerContent}
-      </label>
-    </li>
+    <option
+      className="answerOption"
+      id={props.answerType}
+      value={props.answerType}
+      disabled={props.answer.length > 0}
+    >
+      {props.answerType}
+    </option>
   );
 };

@@ -10,7 +10,8 @@ type QuizProps = {
   question: string;
   questionId: number;
   questionTotal: number;
-  onAnswerSelected: (event: ChangeEvent<HTMLInputElement>) => void;
+  selectSize: number;
+  onAnswerSelected: (event: ChangeEvent<HTMLSelectElement>) => void;
 };
 
 export const Quiz: FC<QuizProps> = (props: QuizProps) => {
@@ -22,7 +23,6 @@ export const Quiz: FC<QuizProps> = (props: QuizProps) => {
         answerType={key.type}
         answer={props.answer}
         questionId={props.questionId}
-        onAnswerSelected={props.onAnswerSelected}
       />
     );
   }
@@ -31,9 +31,15 @@ export const Quiz: FC<QuizProps> = (props: QuizProps) => {
     <div className="quiz">
       <QuestionCount counter={props.questionId} total={props.questionTotal} />
       <Question content={props.question} />
-      <ul className="answerOptions">
+      <select
+        size={props.selectSize}
+        className="answerOptions"
+        id={`question_${props.questionId}`}
+        name={`question_${props.questionId}`}
+        onChange={props.onAnswerSelected}
+      >
         {props.answerOptions.map(renderAnswerOptions)}
-      </ul>
+      </select>
     </div>
   );
 };
