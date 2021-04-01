@@ -52,8 +52,8 @@ export const App: FC = () => {
     setAnswer("");
   }
 
-  function handleAnswerSelected(event: { currentTarget: { value: any } }) {
-    setUserAnswer(event.currentTarget.value);
+  function handleAnswerSelected(value: any ) {
+    setUserAnswer(value);
     if (questionId < quizQuestions.length) {
       setTimeout(() => setNextQuestion(), 300);
     }
