@@ -6,10 +6,13 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.1",
-    "@types/jest": "^26.0.20",
+    "@types/jest": "^26.0.22",
+    "@types/jest-environment-puppeteer": "^4.4.1",
     "@types/node": "^12.20.4",
+    "@types/puppeteer": "^5.4.3",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
+    "jest-puppeteer": "^4.4.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.3",
@@ -20,7 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "debug": "NODE_ENV=debug npm test",
+    "debug": "SET NODE_ENV=debug & npm test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
