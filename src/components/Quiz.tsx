@@ -31,23 +31,27 @@ export const Quiz: FC<QuizProps> = (props: QuizProps) => {
     <div className="quiz">
       <QuestionCount counter={props.questionId} total={props.questionTotal} />
       <Question content={props.question} />
-      <form id="answerForm" >
-      <label htmlFor={`question_${props.questionId}`} className="sr-only">Select an answer:</label>
-      <select
-        size={props.selectSize}
-        className="answerOptions"
-        id={`question_${props.questionId}`}
-        name={`question_${props.questionId}`}
-        required = {true}
-      >
-        {props.answerOptions.map(renderAnswerOptions)}
-      </select>
-      <button
+      <form id="answerForm">
+        <label htmlFor={`question_${props.questionId}`} className="sr-only">
+          Select an answer:
+        </label>
+        <select
+          size={props.selectSize}
+          className="answerOptions"
+          id={`question_${props.questionId}`}
+          name={`question_${props.questionId}`}
+          required={true}
+        >
+          {props.answerOptions.map(renderAnswerOptions)}
+        </select>
+        <button
           type="button"
-          className="close"
-          aria-label="Close"
+          className="submit"
+          aria-label="Submit"
           onClick={props.onAnswerSelected}
-        >Submit</button>
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
