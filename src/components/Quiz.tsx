@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { AnswerOption, answerOption } from "./AnswerOption";
 import { Question } from "./Question";
-import { QuestionCount } from "./QuestionCount";
+import { QuestionCounter } from "./QuestionCounter";
 
 type QuizProps = {
   answer: string;
@@ -20,7 +20,7 @@ export const Quiz: FC<QuizProps> = (props: QuizProps) => {
       <AnswerOption
         key={key.content}
         answerContent={key.content}
-        answerType={key.type}
+        answerId={key.id}
         answer={props.answer}
         questionId={props.questionId}
       />
@@ -29,7 +29,10 @@ export const Quiz: FC<QuizProps> = (props: QuizProps) => {
 
   return (
     <div className="quiz">
-      <QuestionCount counter={props.questionId} total={props.questionTotal} />
+      <QuestionCounter
+        currentNumber={props.questionId}
+        total={props.questionTotal}
+      />
       <Question content={props.question} />
       <form id="answerForm">
         <label htmlFor={`question_${props.questionId}`} className="sr-only">

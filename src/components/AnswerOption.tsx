@@ -7,11 +7,11 @@ export type Answer = {
 
 export type answerOption = {
   content: string;
-  type: string;
+  id: number;
 };
 
 export type AnswerOptionProps = {
-  answerType: string;
+  answerId: number;
   answerContent: string;
   answer: string;
   questionId: number;
@@ -23,11 +23,11 @@ export const AnswerOption: FC<AnswerOptionProps> = (
   return (
     <option
       className="answerOption"
-      id={props.answerType}
-      value={props.answerType}
+      id={props.answerId.toString()}
+      value={props.answerId}
       disabled={props.answer.length > 0}
     >
-      {props.answerType}
+      {props.answerContent}
     </option>
   );
 };
