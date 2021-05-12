@@ -3,13 +3,13 @@ import "./App.css";
 import { Quiz } from "./components/Quiz";
 import { FC, useEffect, useState } from "react";
 import quizQuestions from "./api/quizQuestions";
-import { answerOption } from "./components/AnswerOption";
+import { AlternativeProps } from "./components/Alternative";
 
 export const App: FC = () => {
   const [counter, setCounter] = useState(1);
   const [questionId, setQuestionId] = useState(1);
   const [question, setQuestion] = useState("");
-  const [answerOptions, setAnswerOptions] = useState([] as answerOption[]);
+  const [answerOptions, setAnswerOptions] = useState([] as AlternativeProps[]);
   const [answer, setAnswer] = useState("");
 
   const shuffleArray = (array: any[]) => {
