@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { AnswerOption, answerOption } from "./AnswerOption";
+import { Alternative, AlternativeProps } from "./Alternative";
 import { Question } from "./Question";
 import { QuestionCounter } from "./QuestionCounter";
 
 type QuizProps = {
   answer: string;
-  answerOptions: answerOption[];
+  answerOptions: AlternativeProps[];
   counter: number;
   question: string;
   questionId: number;
@@ -15,14 +15,12 @@ type QuizProps = {
 };
 
 export const Quiz: FC<QuizProps> = (props: QuizProps) => {
-  function renderAnswerOptions(key: answerOption) {
+  function renderAnswerOptions(key: AlternativeProps) {
     return (
-      <AnswerOption
+      <Alternative
         key={key.content}
-        answerContent={key.content}
-        answerId={key.id}
-        answer={props.answer}
-        questionId={props.questionId}
+        content={key.content}
+        id={key.id}
       />
     );
   }

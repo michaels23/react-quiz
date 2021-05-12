@@ -6,7 +6,7 @@ const isDebugging = () => {
     slowMo: 250,
     devtools: true,
   };
-  return process.env.NODE_ENV.indexOf("debug") == 0 ? debugging_mode : {};
+  return process.env.NODE_ENV.indexOf("debug") === 0 ? debugging_mode : {};
 };
 
 let browser;
@@ -32,7 +32,7 @@ describe("on page load", () => {
     const answerOptions = await page.$eval(".answerOptions", (el) =>
       el ? true : false
     );
-    const listItems = await page.$$(".answerOption");
+    const listItems = await page.$$(".alternative");
     expect(answerOptions).toBe(true);
     expect(listItems.length).toBeGreaterThan(1);
 
