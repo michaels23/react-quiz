@@ -29,7 +29,7 @@ describe("on page load", () => {
   it("loads questions", async () => {
     await page.waitForXPath("//*[@class='questionCount' and contains(., '1')]");
 
-    const answerOptions = await page.$eval(".answerOptions", (el) =>
+    const answerOptions = await page.$eval(".alternative", (el) =>
       el ? true : false
     );
     const listItems = await page.$$(".alternative");
