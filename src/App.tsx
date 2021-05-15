@@ -3,14 +3,13 @@ import "./App.css";
 import { Quiz } from "./components/Quiz";
 import { FC, useEffect, useState } from "react";
 import quizQuestions from "./api/quizQuestions";
-import { AlternativeProps } from "./components/Alternative";
+import { alternative } from "components/MultipleChoiceQuestion";
 
 export const App: FC = () => {
   const [counter, setCounter] = useState(1);
   const [questionId, setQuestionId] = useState(1);
-  const [question, setQuestion] = useState("");
-  const [answerOptions, setAnswerOptions] = useState([] as AlternativeProps[]);
-  const [answer, setAnswer] = useState("");
+  const [question, setQuestion] = useState(quizQuestions[0].question);
+  const [answerOptions, setAnswerOptions] = useState([] as alternative[]);
 
   const shuffleArray = (array: any[]) => {
     var currentIndex = array.length,
@@ -41,7 +40,6 @@ export const App: FC = () => {
   }, []);
 
   function setUserAnswer(answer: string) {
-    setAnswer(answer);
   }
 
   function setNextQuestion() {
@@ -49,7 +47,6 @@ export const App: FC = () => {
     setQuestionId(questionId + 1);
     setQuestion(quizQuestions[counter].question);
     setAnswerOptions(quizQuestions[counter].answers);
-    setAnswer("");
   }
 
   function handleAnswerSelected(value: any ) {
@@ -66,9 +63,7 @@ export const App: FC = () => {
         <h2>React Quiz</h2>
       </div>
       <Quiz
-        answer={answer}
-        answerOptions={answerOptions}
-        questionId={questionId}
+        alternatives={answerOptions}
         question={question}
         questionTotal={quizQuestions.length}
         counter={counter}
