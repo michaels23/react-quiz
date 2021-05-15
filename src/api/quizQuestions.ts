@@ -1,6 +1,9 @@
 var quizQuestions = [
   {
-    question: "What franchise would you rather play a game from?",
+    question: {
+      id: 1,
+      content:"What franchise would you rather play a game from?"
+    },
     answers: [
       {
         id: 1,
@@ -17,7 +20,10 @@ var quizQuestions = [
     ],
   },
   {
-    question: "Which console would you prefer to play with friends?",
+    question: {
+      id: 2,
+      content:"Which console would you prefer to play with friends?"
+    },
     answers: [
       {
         id: 1,
@@ -34,8 +40,10 @@ var quizQuestions = [
     ],
   },
   {
-    question:
-      "Which of these racing franchises would you prefer to play a game from?",
+    question: {
+      id: 3,
+      content:"Which of these racing franchises would you prefer to play a game from?"
+    },
     answers: [
       {
         id: 1,
@@ -52,7 +60,10 @@ var quizQuestions = [
     ],
   },
   {
-    question: "Which of these games do you think is best?",
+    question: {
+      id: 4,
+      content:"Which of these games do you think is best?"
+    },
     answers: [
       {
         id: 1,
@@ -69,7 +80,10 @@ var quizQuestions = [
     ],
   },
   {
-    question: "What console would you prefer to own?",
+    question: {
+      id: 5,
+      content:"What console would you prefer to own?"
+    },
     answers: [
       {
         id: 1,
