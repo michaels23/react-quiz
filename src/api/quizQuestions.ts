@@ -1,10 +1,8 @@
 var quizQuestions = [
   {
-    question: {
-      id: 1,
-      content:"What franchise would you rather play a game from?"
-    },
-    answers: [
+    id: 1,
+    content: "What franchise would you rather play a game from?",
+    alternatives: [
       {
         id: 1,
         content: "Halo",
@@ -20,11 +18,9 @@ var quizQuestions = [
     ],
   },
   {
-    question: {
-      id: 2,
-      content:"Which console would you prefer to play with friends?"
-    },
-    answers: [
+    id: 2,
+    content: "Which console would you prefer to play with friends?",
+    alternatives: [
       {
         id: 1,
         content: "X-Box",
@@ -40,11 +36,10 @@ var quizQuestions = [
     ],
   },
   {
-    question: {
-      id: 3,
-      content:"Which of these racing franchises would you prefer to play a game from?"
-    },
-    answers: [
+    id: 3,
+    content:
+      "Which of these racing franchises would you prefer to play a game from?",
+    alternatives: [
       {
         id: 1,
         content: "Forza",
@@ -60,11 +55,9 @@ var quizQuestions = [
     ],
   },
   {
-    question: {
-      id: 4,
-      content:"Which of these games do you think is best?"
-    },
-    answers: [
+    id: 4,
+    content: "Which of these games do you think is best?",
+    alternatives: [
       {
         id: 1,
         content: "BioShock",
@@ -80,11 +73,9 @@ var quizQuestions = [
     ],
   },
   {
-    question: {
-      id: 5,
-      content:"What console would you prefer to own?"
-    },
-    answers: [
+    id: 5,
+    content: "What console would you prefer to own?",
+    alternatives: [
       {
         id: 1,
         content: "X-Box One",

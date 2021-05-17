@@ -3,50 +3,22 @@ import "./App.css";
 import { Quiz } from "./components/Quiz";
 import { FC, useEffect, useState } from "react";
 import quizQuestions from "./api/quizQuestions";
-import { Alternative } from "components/MultipleChoiceQuestion";
 
 export const App: FC = () => {
   const [counter, setCounter] = useState(1);
   const [questionId, setQuestionId] = useState(1);
-  const [question, setQuestion] = useState(quizQuestions[0].question);
-  const [answerOptions, setAnswerOptions] = useState([] as Alternative[]);
-
-  const shuffleArray = (array: any[]) => {
-    var currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  };
+  const [question, setQuestion] = useState(quizQuestions[0]);
 
   useEffect(() => {
-    const shuffledAnswerOptions = quizQuestions.map((question) =>
-      shuffleArray(question.answers)
-    );
-    setQuestion(quizQuestions[0].question);
-    setAnswerOptions(shuffledAnswerOptions[0]);
+    setQuestion(quizQuestions[0]);
   }, []);
 
-  function setUserAnswer(answer: string) {
-  }
+  function setUserAnswer(answer: string) {}
 
   function setNextQuestion() {
     setCounter(counter + 1);
     setQuestionId(questionId + 1);
-    setQuestion(quizQuestions[counter].question);
-    setAnswerOptions(quizQuestions[counter].answers);
+    setQuestion(quizQuestions[counter]);
   }
 
   function handleAnswerSelected(value: any) {
@@ -63,7 +35,6 @@ export const App: FC = () => {
         <h2>React Quiz</h2>
       </div>
       <Quiz
-        alternatives={answerOptions}
         question={question}
         questionTotal={quizQuestions.length}
         counter={counter}
