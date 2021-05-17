@@ -3,13 +3,13 @@ import "./App.css";
 import { Quiz } from "./components/Quiz";
 import { FC, useEffect, useState } from "react";
 import quizQuestions from "./api/quizQuestions";
-import { alternative } from "components/MultipleChoiceQuestion";
+import { Alternative } from "components/MultipleChoiceQuestion";
 
 export const App: FC = () => {
   const [counter, setCounter] = useState(1);
   const [questionId, setQuestionId] = useState(1);
   const [question, setQuestion] = useState(quizQuestions[0].question);
-  const [answerOptions, setAnswerOptions] = useState([] as alternative[]);
+  const [answerOptions, setAnswerOptions] = useState([] as Alternative[]);
 
   const shuffleArray = (array: any[]) => {
     var currentIndex = array.length,
@@ -49,7 +49,7 @@ export const App: FC = () => {
     setAnswerOptions(quizQuestions[counter].answers);
   }
 
-  function handleAnswerSelected(value: any ) {
+  function handleAnswerSelected(value: any) {
     setUserAnswer(value);
     if (questionId < quizQuestions.length) {
       setTimeout(() => setNextQuestion(), 300);
